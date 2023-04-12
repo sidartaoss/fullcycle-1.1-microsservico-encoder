@@ -22,7 +22,7 @@ Então, o que acontece? O microsserviço envia uma mensagem de notificação con
 
 E quanto à mensagem originalmente enviada pelo _RabbitMQ_?
 
-Para não perder a mensagem, é dado um _reject_ nela. Assim, toda mensagem rejeitada na fila de entrada é encaminhada para uma _Dead Letter Exchange_. A _Dead Letter Exchange_ encaminha, automaticamente, para uma _Dead Letter Queue_, que fica aguardando todas as mensagens que tiveram problema. É feito, então, uma consulta nessa fila para uma análise manual, procurando entender por que ocorreu o problema.
+Para não perder a mensagem, é dado um _reject_ nela. Assim, toda mensagem rejeitada na fila de entrada é encaminhada para uma _Dead Letter Exchange_. A _Dead Letter Exchange_ encaminha, automaticamente, para uma _Dead Letter Queue_, que fica aguardando todas as mensagens que tiveram problema. Pode ser feito, então, uma consulta nessa fila para uma análise manual, procurando entender por que ocorreu o problema.
 
 #### Como funciona o processamento?
 
