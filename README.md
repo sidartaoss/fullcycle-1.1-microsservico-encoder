@@ -41,3 +41,52 @@ Então, a aplicação divide-se, basicamente, em 3 camadas: _Domain_, _Applicati
 _Domain_ corresponde ao coração da aplicação, sendo composto por entidades e regras de negócio. _Application_ vai corresponder aos casos de uso, onde se utiliza o _Domain_ para executar o fluxo da aplicação.
 
 E a última camada, chamada de _Framework_, corresponde ao conjunto de bibliotecas que vão dar acesso à aplicação. Compõe-se, por exemplo, de bibliotecas que vão possibilitar receber mensagens das filas, conectar com o banco de dados, etc.
+
+### Execução
+
+1. Executar: `docker-compose up -d`;
+
+#### RabbitMQ
+
+2. Acessar: `localhost:15672`;
+
+3. Criar uma fila para as notificações de sucesso: _videos-result_ e vinculá-la ao _Exchange_: _amq.direct_ / _Routing Key_: _jobs_;
+
+4. Criar uma nova _Exchange_: _dlx_ / _Type_: _fanout_;
+
+5. Criar uma nova fila para as notificações de erro: _videos-failed_ e vinculá-la ao _Exchange_: _dlx_;
+
+#### Golang
+
+6. Entrar no _container_ da aplicação: `docker-compose exec app bash`;
+
+7. Subir a aplicação: `go run framework/cmd/server/server.go`;
+
+#### RabbitMQ
+
+8. Acessar a fila _videos_ / _Publish message_:
+
+```
+{
+  "resource_id":"id-client1",
+  "file_path":"convite.mp4"
+}
+```
+
+9. Onde _file_path_ equivale ao arquivo armazenado no _bucket_ do _Cloud Storage_ para conversão;
+
+10. Clicar _Publish message_ 5 vezes publica 5 mensagens para serem consumidas pela aplicação _Golang_. A aplicação é parametrizada com 5 _workers_ (_threads_) para o processo de conversão e cada _worker_ conta com 50 _threads_ para o _upload_ dos fragmentos já convertidos. Ao todo, 1250 _threads_ operam de forma paralela/concorrente;
+
+#### Golang
+
+11. Visualizar o processamento no terminal. Como o banco de dados _Postgres_ está em modo _debug_, é possível visualizar o _status_ de cada _job_ sendo alterado para: _DOWNLOADING_, _FRAGMENTING_, _ENCODING_, _UPLOADING_, _FINISHING_, _COMPLETED_;
+
+#### RabbitMQ
+
+12. Acessar a fila _videos-result_ para visualizar as notificações de sucesso;
+
+13. Acessar _Get message_ / clicar _Get Message(s)_;
+
+#### Google Cloud Storage
+
+14. Visualizar 5 novos diretórios, cada diretório contendo o resultado da conversão para o formato _MPEG-DASH_.
