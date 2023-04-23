@@ -36,6 +36,22 @@ Assim, quando a aplicação estiver lidando com o processamento de vários víde
 
 Optou-se por aproximar-se o máximo possível de uma Arquitetura Hexagonal (_Ports And Adapters_).
 
+> Arquitetura Hexagonal (_Ports and Adapters_)
+
+- Permite:
+
+  - #### Trabalhar com um _design_ focado em solucionar o problema do domínio;
+
+    - Vamos ter uma camada de domínio responsável por resolver a complexidade do negócio;
+  
+  - #### Deixar a complexidade técnica para uma camada de _framework_;
+
+    - Vamos ter uma camada de _framework_ responsável por resolver o sistema de mensageria (_RabbitMQ_) e banco de dados (_Postgres_);
+    
+- Com isso:
+
+    - A  aplicação torna-se flexível para adicionar/remover componentes de infraestrutura sem precisar alterar nenhum outro componente da aplicação ou o modelo de domínio;
+
 Então, a aplicação divide-se, basicamente, em 3 camadas: _Domain_, _Application_ e _Framework_.
 
 _Domain_ corresponde ao coração da aplicação, sendo composto por entidades e regras de negócio. _Application_ vai corresponder aos casos de uso, onde se utiliza o _Domain_ para executar o fluxo da aplicação.
