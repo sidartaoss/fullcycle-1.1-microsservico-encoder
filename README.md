@@ -2,9 +2,9 @@
 
 No projeto _Codeflix_, o microsserviço de conversão de vídeos é uma aplicação que tem, como objetivo, converter vídeos a partir do formato _MP4_ para o formato _MPEG-DASH_, o qual corresponde a um formato mais adequado para realizar o _playback_ de vídeos na _Internet_.
 
-> Por que optar por Go?
+> Por que Go?
 
-- Porque a linguagem _Go_ vai _resolver_ de maneira muito simples os problemas enfrentados pela aplicação:
+- Optou-se pela linguagem _Go_ porque ela lida de maneira muito simples com a complexidade técnica que a aplicação precisa resolver:
   - O _Go_ trabalha muito facilmente com _multithreading_;
   - É muito performático;
   - E vai realizar a leitura de filas, o _upload_ dos vídeos e o _encoding_ de mais baixo nível de uma forma muito mais simples.
