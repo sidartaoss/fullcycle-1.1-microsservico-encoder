@@ -38,19 +38,17 @@ Optou-se por aproximar-se o máximo possível de uma Arquitetura Hexagonal (_Por
 
 > Arquitetura Hexagonal (_Ports and Adapters_)
 
-- Permite:
-
-  - #### Trabalhar com um _design_ focado em solucionar o problema do domínio;
+  - #### Permite trabalhar com um _design_ focado em solucionar o problema do domínio;
 
     - Vamos ter uma camada de domínio responsável por resolver a complexidade do negócio;
   
-  - #### Deixar a complexidade técnica para uma camada de _framework_;
+  - #### Permite deixar a complexidade técnica para ser resolvida por uma camada de _framework_;
 
     - Vamos ter uma camada de _framework_ responsável por resolver o sistema de mensageria (_RabbitMQ_) e banco de dados (_Postgres_);
     
 - Com isso:
 
-    - A  aplicação torna-se flexível para adicionar/remover componentes de infraestrutura sem precisar alterar nenhum outro componente da aplicação ou o modelo de domínio;
+    - A  aplicação torna-se flexível para adicionar/remover componentes de infraestrutura sem precisar alterar _nenhum_ outro componente da aplicação ou o modelo de domínio;
 
 Então, a aplicação divide-se, basicamente, em 3 camadas: _Domain_, _Application_ e _Framework_.
 
