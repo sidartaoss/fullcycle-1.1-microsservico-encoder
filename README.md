@@ -4,7 +4,7 @@ No projeto _Codeflix_, o microsserviço de conversão de vídeos é uma aplicaç
 
 > Por que Go?
 
-- Optou-se pela linguagem _Go_ porque ela lida de maneira muito simples com a complexidade técnica que a aplicação precisa resolver:
+- Optou-se por _Go_ porque é uma linguagem que lida de maneira muito simples com a complexidade técnica que a aplicação precisa resolver:
   - O _Go_ trabalha muito facilmente com _multithreading_;
   - É muito performático;
   - E vai realizar a leitura de filas, o _upload_ dos vídeos e o _encoding_ de mais baixo nível de uma forma muito mais simples.
