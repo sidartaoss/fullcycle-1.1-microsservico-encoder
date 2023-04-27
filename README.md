@@ -37,7 +37,7 @@ Assim, quando a aplicação estiver lidando com o processamento de vários víde
 
 #### E o design da aplicação?
 
-Optou-se por aproximar-se o máximo possível de uma Arquitetura Hexagonal (_Ports And Adapters_).
+Optou-se por aproximar-se o máximo possível do _design_ de:
 
 > Arquitetura Hexagonal (_Ports and Adapters_)
 
@@ -49,9 +49,13 @@ Optou-se por aproximar-se o máximo possível de uma Arquitetura Hexagonal (_Por
 
     - Vamos ter uma camada de _framework_ responsável por resolver o sistema de mensageria (_RabbitMQ_) e banco de dados (_Postgres_);
     
-- Com isso:
+  - Com isso:
 
-    - A  aplicação torna-se flexível para adicionar/remover componentes de infraestrutura sem precisar alterar _nenhum_ outro componente da aplicação ou o modelo de domínio;
+    - #### A  aplicação torna-se flexível para adicionar/remover componentes de infraestrutura sem precisar alterar _nenhum_ outro componente da aplicação ou o modelo de domínio;
+    
+      > 12 Fatores
+      
+        - Trata-se do mesmo objetivo a ser alcançado pelo fator 4 da metodologia dos 12 fatores. Esse fator recomenda tratar serviços de apoio como recursos anexados. Basicamente, deveria ser possível anexar/desanexar qualquer serviço local ou de terceiros, como o banco de dados, sem realizar quaisquer mudanças no código da aplicação.
 
 Então, a aplicação divide-se, basicamente, em 3 camadas: _Domain_, _Application_ e _Framework_.
 
