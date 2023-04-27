@@ -37,7 +37,7 @@ Assim, quando a aplicação estiver lidando com o processamento de vários víde
 
 #### E o design da aplicação?
 
-Optou-se por aproximar-se o máximo possível do _design_ de:
+Optou-se por adotar os conceitos de _design_ da:
 
 > Arquitetura Hexagonal (_Ports and Adapters_)
 
